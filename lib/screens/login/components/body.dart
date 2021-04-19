@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagclone/Screens/Login/components/background.dart';
@@ -57,9 +58,7 @@ class _BodyState extends State<Body> {
           ),
           RoundedButton(
             text: "LOGIN",
-            onPressed: () {
-              print(passwordController.text);
-            },
+            onPressed: _loginUser,
           ),
           SizedBox(height: size.height * 0.02),
           AlreadyHaveAnAccountCheck(
@@ -72,5 +71,25 @@ class _BodyState extends State<Body> {
         ],
       ),
     );
+  }
+
+  void _loginUser() async {
+    try {
+      var response = await Dio().post(
+        AuthenticateAccountUrl,
+        data: {
+          'username': usernameController.text,
+          'password': passwordController.text,
+          'grant_type': 'password',
+          'scopes': 'openid profile'
+        },
+        options: Options(contentType: Headers.formUrlEncodedContentType)
+      );
+      if(response.statusCode == 200) {
+        print(response.data);
+      }
+    } on DioError catch (e) {
+      print(e.response.data);
+    }
   }
 }
