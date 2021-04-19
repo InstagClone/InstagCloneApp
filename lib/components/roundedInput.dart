@@ -30,4 +30,3 @@ class RoundedInputField extends StatelessWidget {
     );
   }
 }
-
