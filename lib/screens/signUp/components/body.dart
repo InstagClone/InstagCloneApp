@@ -23,7 +23,6 @@ class Body extends StatelessWidget {
             'assets/icons/signup.svg',
             height: size.height * 0.30
           ),
-          SizedBox(height: size.height * 0.02),
           RoundedInputField(
             hintText: 'Your Email',
             onChanged: (value) {}
@@ -35,6 +34,7 @@ class Body extends StatelessWidget {
             text: 'SIGN UP',
             onPressed: () {},
           ),
+          SizedBox(height: size.height * 0.025),
           AlreadyHaveAnAccountCheck(
             login: false,
             onTap: () {

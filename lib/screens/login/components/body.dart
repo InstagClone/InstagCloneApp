@@ -8,13 +8,16 @@ import 'package:instagclone/components/roundedInput.dart';
 import 'package:instagclone/components/roundedPasswordField.dart';
 import 'package:instagclone/constants.dart';
 
-class Body extends StatelessWidget {
-  final bool loading;
+class Body extends StatefulWidget {
   const Body({
     Key key,
-    this.loading = false
   }) : super(key: key);
 
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.maybeOf(context).size;
@@ -47,7 +50,7 @@ class Body extends StatelessWidget {
             text: "LOGIN",
             onPressed: () {}
           ),
-          SizedBox(height: size.height * 0.025),
+          SizedBox(height: size.height * 0.02),
           AlreadyHaveAnAccountCheck(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -55,12 +58,8 @@ class Body extends StatelessWidget {
               }));
             }
           ),
-          SizedBox(height: size.height * 0.025),
-          // CircularProgressIndicator(
-          //   valueColor: AlwaysStoppedAnimation<Color>(KPrimaryColor),
-          // )
         ],
-      )
+      ),
     );
   }
 }
