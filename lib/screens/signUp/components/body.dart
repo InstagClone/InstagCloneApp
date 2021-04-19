@@ -8,6 +8,9 @@ import 'package:instagclone/components/roundedInput.dart';
 import 'package:instagclone/components/roundedPasswordField.dart';
 
 class Body extends StatelessWidget {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.maybeOf(context).size;
@@ -25,14 +28,18 @@ class Body extends StatelessWidget {
           ),
           RoundedInputField(
             hintText: 'Your Email',
-            onChanged: (value) {}
+            onChanged: (value) {},
+            controller: usernameController,
           ),
           RoudnedPasswordField(
             onChanged: (value) {},
+            controller: passwordController,
           ),
           RoundedButton(
             text: 'SIGN UP',
-            onPressed: () {},
+            onPressed: () {
+              print(passwordController.text);
+            },
           ),
           SizedBox(height: size.height * 0.025),
           AlreadyHaveAnAccountCheck(

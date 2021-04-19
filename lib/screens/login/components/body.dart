@@ -18,6 +18,17 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.maybeOf(context).size;
@@ -37,18 +48,18 @@ class _BodyState extends State<Body> {
           SizedBox(height: size.height * 0.02),
           RoundedInputField(
             hintText: 'Username',
-            onChanged: (value) {
-              print(value);
-            },
+            onChanged: (value) {},
+            controller: usernameController,
           ),
           RoudnedPasswordField(
-            onChanged: (value) {
-              print(value);
-            }
+            onChanged: (value) {},
+            controller: passwordController,
           ),
           RoundedButton(
             text: "LOGIN",
-            onPressed: () {}
+            onPressed: () {
+              print(passwordController.text);
+            },
           ),
           SizedBox(height: size.height * 0.02),
           AlreadyHaveAnAccountCheck(
