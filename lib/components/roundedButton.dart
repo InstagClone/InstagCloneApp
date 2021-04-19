@@ -27,12 +27,14 @@ class RoundedButton extends StatelessWidget {
               vertical: 20,
               horizontal: 40
             ),
-            backgroundColor: KPrimaryColor),
-            onPressed: onPressed,
-              child: Text(
-                text,
-                style: TextStyle(color: textColor),
-              )),
+            backgroundColor: KPrimaryColor
+          ),
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: TextStyle(color: textColor),
+          )
+        ),
       ),
     );
   }
